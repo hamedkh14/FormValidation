@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --bg-primary: #FBC1BC;
+    --bg-secondary: #E4406F;
+    --bg-gray: #555;
+    --global-radius: 4px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Open Sans', sans;
+    font-size: 15px;
+    background-color: var(--bg-primary);
+}
+
+*{
+    box-sizing: border-box;
+    outline: 0;
+}
+
+input[type=text], input[type=number], select, textarea {
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    padding: 0 20px;
+}
+input[type=text]:focus, input[type=number]:focus, select:focus, textarea:focus {
+    border-color: var(--bg-secondary);
+}
+
+textarea {
+    height: 150px;
+    resize: none;
+    padding: 20px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .formControll {
+    width: 700px;
+}
+
+/* ====================================================
+------------------ Steps Progress ---------------------
+=====================================================*/
+
+main .formControll .stepsProgress {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+main .formControll .stepsProgress > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+main .formControll .stepsProgress div div {
+    width: 35px;
+    height: 35px;
+    border-radius: var(--global-radius);
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    line-height: 35px;
+    color: var(--bg-secondary);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+main .formControll .stepsProgress div div::after {
+    position: absolute;
+    content: '';
+    height: 1px;
+    width: 150px;
+    background-color: rgba(255, 255, 255, 0.5);
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+main .formControll .stepsProgress div:first-child div:after {
+    display: none;
+}
+main .formControll .stepsProgress div.active div,
+main .formControll .stepsProgress div.active div::after {
+    background-color: var(--bg-secondary);
+    color: #fff;
+}
+
+main .formControll .stepsProgress div.active p {
+    color: var(--bg-secondary);
+}
+
+
+/* ====================================================
+----------------------- Step Field --------------------
+=====================================================*/
+
+main .formControll form .step {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: var(--global-radius);
+    padding: 20px;
+    margin-top: 30px;
+    display: none;
+}
+
+main .formControll form .step,
+main .formControll form .step > div {
+    width: 100%;
+}
+
+main .formControll form .step > div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+main .formControll form .step > div label {
+    margin-bottom: 5px;
+}
+
+main .formControll form .step div.inputRadio div {
+    display: flex;
+}
+
+main .formControll form .step div.inputRadio div div {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+main .formControll form .step div.btnAction {
+    margin-bottom: 0;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+main .formControll form .step div.btnAction .btn {
+    min-width: 100px;
+    height: 40px;
+    border-radius: var(--global-radius);
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    padding: 0 10px;
+    /* transition: all 0.3s; */
+    position: relative;
+    overflow: hidden;
+}
+main .formControll form .step div.btnAction .btn span {
+    position: relative;
+    z-index: 1;
+}
+main .formControll form .step div.btnAction .btn::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+main .formControll form .step div.btnAction .btn.btnSend {
+    background-color: var(--bg-secondary);
+}
+
+main .formControll form .step div.btnAction .btn.btnCancel {
+    background-color: var(--bg-gray);
+}
+
+main .formControll form .step div.btnAction .btn:hover::before {
+    opacity: 1;
+} 
+
+/* main .formControll form .step div.btnAction .btn:hover {
+    background-color: #212121;
+} */
+
+main .formControll form .step#step1 {
+    display: block;
+}
+
+
+/* ====================================================
+------------------ Line Progress ----------------------
+=====================================================*/
+
+main .formControll .progress {
+    width: 100%;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-top: 20px;
+    border-radius: var(--global-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+main .formControll .progress .range {
+    width: 100%;
+    height: 5px;
+    border-radius: 20px;
+    background-color: rgba(200, 200, 200, 0.5);
+    box-shadow: inset 2px 2px 4px rgba(50, 50, 50, 0.3);
+    overflow: hidden;
+}
+
+main .formControll .progress .range div {
+    width: 0;
+    height: 100%;
+    background-color: var(--bg-secondary);
+}
